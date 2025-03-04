@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const pretendard = localFont({
   src: "../fonts/PretendardVariable.woff2",
@@ -22,13 +23,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${pretendard.variable} flex h-screen w-screen flex-col antialiased`}
       >
-        <Header />
-        <main className="grow">{children}</main>
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          <main className="grow">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

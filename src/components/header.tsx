@@ -13,9 +13,9 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="z-40 flex items-center justify-between border px-6 py-4">
-      <Link href="/" className="text-xl font-bold">
-        Grit의 개발 블로그 🌱
+    <header className="sticky top-0 z-40 flex items-center justify-between px-8 py-4">
+      <Link href="/" className="text-lg font-bold">
+        Grit의 블로그 🌱
       </Link>
 
       <div className="flex items-center gap-6 text-sm">
@@ -24,8 +24,8 @@ export default function Header() {
             href="/blog"
             className={
               pathname.startsWith("/blog")
-                ? "text-green-600 dark:text-green-300"
-                : "transition-colors duration-200 ease-in-out hover:text-green-600 dark:hover:text-green-300"
+                ? "text-primary"
+                : "transition-colors duration-200 ease-in-out"
             }
           >
             BLOG
@@ -34,20 +34,21 @@ export default function Header() {
             href="/about"
             className={
               pathname.startsWith("/about")
-                ? "text-green-600 dark:text-green-300"
-                : "transition-colors duration-200 ease-in-out hover:text-green-600 dark:hover:text-green-300"
+                ? "text-primary"
+                : "transition-colors duration-200 ease-in-out"
             }
           >
             ABOUT
           </Link>
         </div>
         <div className="flex gap-1">
-          <Link href="https://github.com/Grit03">
-            <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon">
+            <Link href="https://github.com/Grit03">
               <FaGithub />
               <span className="sr-only">github</span>
-            </Button>
-          </Link>
+            </Link>
+          </Button>
+
           <Button
             variant="ghost"
             size="icon"
@@ -59,8 +60,8 @@ export default function Header() {
               }
             }}
           >
-            <LuSun className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-            <LuMoon className="absolute rotate-90 scale-0 text-xl transition-all dark:rotate-0 dark:scale-100" />
+            <LuSun className="absolute scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+            <LuMoon className="absolute scale-0 rotate-90 text-xl transition-all dark:scale-100 dark:rotate-0" />
             <span className="sr-only">Toggle theme</span>
           </Button>
         </div>
